@@ -29,15 +29,16 @@ const nextPayment = (repeat: string, date: string) => {
 const SchedItem = ({ children, payment }: Props) => {
   const transFrom = getAcct(payment.acctFrom)
   const transTo = getAcct(payment.acctTo || '')
+  const id = (payment.pay?.bpay ? `BPAY: ${payment.pay.bpay}` : '') +
+    (payment.pay?.payId ? `PayID: ${payment.pay?.payId} ${payment.pay?.acct}` : '') +
+    (payment.pay?.bsb ? `BSB: ${payment.pay?.bsb} Acct: ${payment.pay?.acct}` : '')
   return (
     <S.Sched>
       <S.From>{transFrom?.name}</S.From>
       <S.To>
-        {transTo?.name || payment.pay?.name || payment.description}<br />
-        {payment.pay?.bpay ? `BPay: ${payment.pay.bpay}` : ''}
-        {payment.pay?.payId ? `PayID: ${payment.pay.payId}` : ''}
-        {payment.pay?.bsb ? `BSB: ${payment.pay.bsb}` : ''}
-        &nbsp;&nbsp;&nbsp;{payment.pay?.acct ? `Acct: ${payment.pay.acct}` : ''}
+        {transTo?.name || payment.pay?.name}<br />
+        {id && <>{id}<br /></>}
+        {payment.description}
       </S.To>
       <S.Amount>{formatCurrency(payment.amount)}</S.Amount>
       <S.Repeat>{payment.repeat}</S.Repeat>

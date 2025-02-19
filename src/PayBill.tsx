@@ -44,7 +44,7 @@ const PayBill = ({ onChange, payment }: Props) => {
   }
   return (
     <S.PayBill>
-      <S.Logo as="img" alt="BPay" src={BPayLogo} />
+      <S.Logo as="img" alt="BPAY" src={BPayLogo} />
       <PS.Label htmlFor="billerCode">Biller code</PS.Label>
       <S.FindBiller ref={findRef}>
         <PS.Input ref={codeRef} id="billerCode" required type="number" value={payment.pay?.bpay} onChange={changeCode} />

@@ -74,13 +74,13 @@ const Pay = () => {
   }
   return (
     <PS.Form as={Form} method="post" onSubmit={submitTransfer}>
-      <PS.Heading>Pay</PS.Heading>
+      <PS.Heading>To</PS.Heading>
       <SelectAcct changeAcct={changeFrom} current={transFrom} label="From" showAvailable />
       <PS.Label>Pay</PS.Label>
       <PS.RadioGroup>
         <PS.Label>
           <PS.Radio checked={payType === 'acct'} name="payType" type="radio" value="acct" onChange={changePayType} />
-          BSB &amp; Acct
+          Pay anyone
         </PS.Label>
         <PS.Label>
           <PS.Radio checked={payType === 'payid'} name="payType" type="radio" value="payid" onChange={changePayType} />
@@ -88,7 +88,7 @@ const Pay = () => {
         </PS.Label>
         <PS.Label>
           <PS.Radio checked={payType === 'bill'} name="payType" type="radio" value="bill" onChange={changePayType} />
-          Bill
+          BPAY
         </PS.Label>
       </PS.RadioGroup>
       <div>

@@ -21,7 +21,7 @@ const action = async ({ request }: ActionFunctionArgs) => {
           amount: -payment.amount,
           date: new Date(),
           reference: payment.description,
-          title: payment.description || `Transfer to ${transTo?.name || ''}`
+          title: payment.pay?.name || `Transfer to ${transTo?.name || ''}`
         })
         transFrom.balance -= payment.amount
       }
@@ -30,7 +30,7 @@ const action = async ({ request }: ActionFunctionArgs) => {
           amount: payment.amount,
           date: new Date(),
           reference: payment.description,
-          title: payment.description || `Transfer from ${transFrom?.name || ''}`
+          title: payment.pay?.name || `Transfer from ${transFrom?.name || ''}`
         })
         transTo.balance += payment.amount
       }
@@ -72,7 +72,7 @@ const Confirm = () => {
           <S.Label>To</S.Label>
           <S.Value>
             {payment.pay.name}<br />
-            {payment.pay.bpay ? `BPay: ${payment.pay.bpay}` : ''}
+            {payment.pay.bpay ? `BPAY: ${payment.pay.bpay}` : ''}
             {payment.pay.payId ? `PayID: ${payment.pay.payId}` : ''}
             {payment.pay.bsb ? `BSB: ${payment.pay.bsb}` : ''}
             &nbsp;&nbsp;&nbsp;{payment.pay.acct ? `Acct: ${payment.pay.acct}` : ''}
