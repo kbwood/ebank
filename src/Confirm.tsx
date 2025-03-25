@@ -24,6 +24,7 @@ const action = async ({ request }: ActionFunctionArgs) => {
           title: payment.pay?.name || `Transfer to ${transTo?.name || ''}`
         })
         transFrom.balance -= payment.amount
+        transFrom.available -= payment.amount
       }
       if (transTo) {
         transTo.items.unshift({
@@ -33,6 +34,7 @@ const action = async ({ request }: ActionFunctionArgs) => {
           title: payment.pay?.name || `Transfer from ${transFrom?.name || ''}`
         })
         transTo.balance += payment.amount
+        transTo.available += payment.amount
       }
     }
     else {
